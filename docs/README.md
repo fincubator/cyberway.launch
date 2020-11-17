@@ -31,16 +31,31 @@ Ensure that all containers have started
 ```
 docker ps
 ```
-Output
-```
-
-```
 
 Check sync status with [api](https://docs.cyberway.io/software_manuals/api_reference/nodeos_chain_api#get_info)
 
 ```
 curl --request POST --data '' http://127.0.0.1:8888/v1/chain/get_info| jq
 ``` 
+
+Output. Check `head_block_num`.
+```
+{
+  "server_version": "e945893a",
+  "chain_id": "591c8aa5cade588b1ce045d26e5f2a162c52486262bd2d7abcb7fa18247e17ec",
+  "head_block_num": 11895594,
+  "last_irreversible_block_num": 11895545,
+  "last_irreversible_block_id": "00b582f99d7002d43f26b29af7f2914545767e35020fd7283acfdea436b01e50",
+  "head_block_id": "00b5832a6fab129098c6dfa18f1d6c836af29789e5a7dd3292cb2bc392798b23",
+  "head_block_time": "2020-11-03T04:57:00.000",
+  "head_block_producer": "4qvigkm1u4dt",
+  "virtual_block_cpu_limit": 1400000000,
+  "virtual_block_net_limit": 1048576000,
+  "block_cpu_limit": 1399900,
+  "block_net_limit": 1048576,
+  "server_version_string": "v2.1.1"
+}
+```
 
 Before continuing, your cyberway node must be fully synchronized to the blockchain.
 
