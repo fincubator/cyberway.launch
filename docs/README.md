@@ -45,7 +45,7 @@ curl --request POST --data '' http://127.0.0.1:8888/v1/chain/get_info| jq
 Before continuing, your cyberway node must be fully synchronized to the blockchain.
 
 
-## (Optional) Recovery cyberway blockchain from shapshot**
+## (Optional) Recovery cyberway blockchain from shapshot
 
 ```
 cd cyberway.launch && mkdir snapshot && cd snapshot
