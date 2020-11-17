@@ -1,0 +1,24 @@
+version: '3.8'
+services:
+   postgres:
+      image: postgres:11.5-alpine
+      restart: always
+      volumes:
+        - stihi-postgres:/var/lib/postgresql/data
+      environment:
+        - POSTGRES_LOGGING=true
+        - POSTGRES_DB=backend
+        - POSTGRES_PASSWORD=backend
+        - POSTGRES_USER=backend
+        - PGPORT=5432
+      ports:
+        - 5432:5432
+
+volumes:
+ stihi-postgres:
+   external: true
+ stihi-redis:
+   external: true
+
+networks:
+  stihi:

@@ -22,8 +22,6 @@ curl -L "https://github.com/docker/compose/releases/download/1.27.4/docker-compo
 chmod +x /usr/local/bin/docker-compose
 ```
 
-
-
 ## Install Cyberway Full Node on Debian 10
 
 ```
