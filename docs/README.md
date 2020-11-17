@@ -1,15 +1,18 @@
 
-# Install Cyberway full node on debian 10
+# Golos Deployment How-to
 
-System requirements: 
+## System requirements
+
 - Debian 10
 - Docker 
 - Docker compose
 
-Install system dependencies:
+## Install system dependencies 
+
 ```
 apt update && apt install curl git wget jq
 ```
+
 
 Ensure that docker and docker-compose have installed.
 ```
@@ -19,7 +22,9 @@ curl -L "https://github.com/docker/compose/releases/download/1.27.4/docker-compo
 chmod +x /usr/local/bin/docker-compose
 ```
 
-**Install Cyberway full node on debian 10.**
+
+
+## Install Cyberway Full Node on Debian 10
 
 ```
 git clone https://github.com/cyberway/cyberway.launch.git
@@ -80,4 +85,37 @@ sudo docker run --rm -ti -v `readlink -f snapshot`:/host:ro -v cyberway-nodeos-d
 sudo docker run --rm -ti -v `readlink -f snapshot`:/host:ro -v cyberway-mongodb-data:/data:rw cyberway/cyberway:v2.1.1 tar -xPvf /host/mongodb.tar.bz2
 sudo docker run --rm -ti -v `readlink -f snapshot`:/host:ro -v cyberway-nats-data:/data:rw cyberway/cyberway:v2.1.1 tar -xPvf /host/nats.tar.bz2
 sudo ./start_full_node.sh up
+```
+
+```
+git clone https://github.com/lexansoft/stihi-backend-1.0/
+cd stihi-backend-1.0/
+docker run -it  --rm -v ${PWD}:/build -w /build golang:1.14 bash
+```
+
+## Build stihi-backend
+
+```
+git clone https://github.com/lexansoft/stihi-backend-1.0.git
+cd stihi-backend-1.0
+docker run -it  --rm -v ${PWD}:/build -w /build golang:1.14 go build
+```
+
+Binary file `stihi-backend` will be exists on current directory 
+
+```
+./stihi-backend -h
+Usage of ./stihi-backend:
+  -config string
+    	Application config file name
+  -db_config string
+    	Db config file name
+  -mongo_db_config string
+    	MongoDb config file name
+  -pid string
+    	Pid file name (default "/var/tmp/stihi_backend_cyberway.pid")
+  -pidfile string
+    	If specified, write pid to file.
+  -redis_config string
+    	Redis config file name
 ```
