@@ -60,6 +60,7 @@ sudo docker volume rm cyberway-mongodb-data cyberway-nodeos-data cyberway-queue 
 sudo docker volume create cyberway-mongodb-data 
 sudo docker volume create cyberway-nodeos-data 
 sudo docker volume create cyberway-nats-data
+sudo docker volume create --name=cyberway-queue
 sudo docker run --rm -ti -v `readlink -f snapshot`:/host:ro -v cyberway-nodeos-data:/data:rw cyberway/cyberway:v2.1.1 tar -xPvf /host/nodeos.tar.bz2
 sudo docker run --rm -ti -v `readlink -f snapshot`:/host:ro -v cyberway-mongodb-data:/data:rw cyberway/cyberway:v2.1.1 tar -xPvf /host/mongodb.tar.bz2
 sudo docker run --rm -ti -v `readlink -f snapshot`:/host:ro -v cyberway-nats-data:/data:rw cyberway/cyberway:v2.1.1 tar -xPvf /host/nats.tar.bz2
