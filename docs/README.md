@@ -43,3 +43,25 @@ curl --request POST --data '' http://127.0.0.1:8888/v1/chain/get_info| jq
 ``` 
 
 Before continuing, your cyberway node must be fully synchronized to the blockchain.
+
+
+## (Optional) Recovery cyberway blockchain from shapshot**
+
+```
+cd cyberway.launch && mkdir snapshot && cd snapshot
+wget https://download.cyberway.io/snapshot-20201102-v2.1.1.tar
+tar xvf snapshot-20201102-v2.1.1.tar
+rm snapshot-20201102-v2.1.1.tar
+cd ..
+
+sudo docker stop -t 200 nodeosd
+sudo ./start_full_node.sh down
+sudo docker volume rm cyberway-mongodb-data cyberway-nodeos-data cyberway-queue cyberway-nats-data
+sudo docker volume create cyberway-mongodb-data 
+sudo docker volume create cyberway-nodeos-data 
+sudo docker volume create cyberway-nats-data
+sudo docker run --rm -ti -v `readlink -f snapshot`:/host:ro -v cyberway-nodeos-data:/data:rw cyberway/cyberway:v2.1.1 tar -xPvf /host/nodeos.tar.bz2
+sudo docker run --rm -ti -v `readlink -f snapshot`:/host:ro -v cyberway-mongodb-data:/data:rw cyberway/cyberway:v2.1.1 tar -xPvf /host/mongodb.tar.bz2
+sudo docker run --rm -ti -v `readlink -f snapshot`:/host:ro -v cyberway-nats-data:/data:rw cyberway/cyberway:v2.1.1 tar -xPvf /host/nats.tar.bz2
+sudo ./start_full_node.sh up
+```
