@@ -39,6 +39,6 @@ Looks like frontend for services:
 - https://img.golos.io
 
 
-## One onother web client alternative 
+## Onother one web client alternative 
 
 - [stihi-backend](https://github.com/lexansoft/stihi-backend-1.0)
