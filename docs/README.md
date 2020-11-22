@@ -86,12 +86,6 @@ sudo docker run --rm -ti -v `readlink -f snapshot`:/host:ro -v cyberway-nats-dat
 sudo ./start_full_node.sh up
 ```
 
-```
-git clone https://github.com/lexansoft/stihi-backend-1.0/
-cd stihi-backend-1.0/
-docker run -it  --rm -v ${PWD}:/build -w /build golang:1.14 bash
-```
-
 ## Build stihi-backend
 
 ```
