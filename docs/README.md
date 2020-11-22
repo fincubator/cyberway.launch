@@ -39,7 +39,7 @@ docker ps
 Check sync status with [api](https://docs.cyberway.io/software_manuals/api_reference/nodeos_chain_api#get_info)
 
 ```
-curl --request POST --data '' http://127.0.0.1:8888/v1/chain/get_info| jq
+curl -s --request POST --data '' http://127.0.0.1:8888/v1/chain/get_info| jq
 ``` 
 
 Output. Check `head_block_num`.
