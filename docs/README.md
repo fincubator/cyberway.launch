@@ -26,6 +26,7 @@ chmod +x /usr/local/bin/docker-compose
 
 ```
 git clone https://github.com/cyberway/cyberway.launch.git
+cd cyberway.launch
 ./start_full_node.sh
 ```
 
