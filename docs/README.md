@@ -36,6 +36,18 @@ Ensure that all containers have started
 docker ps
 ```
 
+Output example. Ensure that all containers have started.
+
+```
+CONTAINER ID        IMAGE                               COMMAND                  CREATED             STATUS                PORTS                                              NAMES
+a0c4b2586e3e        cyberway/mongodb-exporter:v0.6.2    "/bin/mongodb_export…"   6 days ago          Up 6 days             0.0.0.0:9216->9216/tcp                             mongodb-exporter
+57a52297a3e1        cyberway/cyberway:v2.1.1            "bash -c 'exec /opt/…"   6 days ago          Up 6 days             0.0.0.0:8888->8888/tcp, 0.0.0.0:9876->9876/tcp     nodeosd
+dc9770ed2c84        cyberway/nats-exporter:latest       "/prometheus-nats-ex…"   6 days ago          Up 6 days             0.0.0.0:7777->7777/tcp                             nats-exporter
+38865e5396c7        cyberway/cyberway-notifier:v2.1.0   "bash -c 'exec /opt/…"   6 days ago          Up 6 days                                                                cyberway-notifier
+f354d065cf50        nats-streaming:0.14.1-linux         "/nats-streaming-ser…"   6 days ago          Up 6 days             0.0.0.0:4222->4222/tcp, 127.0.0.1:8222->8222/tcp   nats-streaming
+40d9cdd61a6c        mongo:4.0.6-xenial                  "docker-entrypoint.s…"   6 days ago          Up 6 days (healthy)   127.0.0.1:27018->27017/tcp                         mongo
+```
+
 Check sync status with [api](https://docs.cyberway.io/software_manuals/api_reference/nodeos_chain_api#get_info)
 
 ```
