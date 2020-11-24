@@ -1,18 +1,42 @@
 version: '3.8'
 services:
-   postgres:
-      image: postgres:11.5-alpine
-      restart: always
-      volumes:
-        - stihi-postgres:/var/lib/postgresql/data
-      environment:
-        - POSTGRES_LOGGING=true
-        - POSTGRES_DB=backend
-        - POSTGRES_PASSWORD=backend
-        - POSTGRES_USER=backend
-        - PGPORT=5432
+
+  postgres:
+    image: postgres:11.5-alpine
+    restart: always
+    volumes:
+      - stihi-postgres:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_LOGGING=true
+      - POSTGRES_DB=backend
+      - POSTGRES_PASSWORD=backend
+      - POSTGRES_USER=backend
+      - PGPORT=5432
+    ports:
+      - 5432:5432
+
+  redis:
+    image: redis:6.0.9
+    restart: always
+    volumes:
+      - stihi-redis:/data
+    ports:
+      - 6379:6379
+
+  stihi-backend:
+      build:
+        context: https://github.com/lexansoft/stihi-backend-1.0.git
       ports:
-        - 5432:5432
+        - 9091:9091
+        - 9001:9001
+      volumes:
+        - ./configs:/configs
+      command:
+        - stihi-backend
+        - -db_config=/configs/db_config.yaml 
+        - -mongo_db_config=/configs/mongo_db_config.yaml 
+        - -redis_config=/configs/redis_config.yaml 
+        - -config=/configs/stihi_backend_cw_config.yaml
 
 volumes:
  stihi-postgres:
