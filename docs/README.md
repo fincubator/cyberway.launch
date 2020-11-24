@@ -26,6 +26,7 @@ chmod +x /usr/local/bin/docker-compose
 
 ```
 git clone https://github.com/cyberway/cyberway.launch.git
+cd cyberway.launch
 ./start_full_node.sh
 ```
 
@@ -38,7 +39,7 @@ docker ps
 Check sync status with [api](https://docs.cyberway.io/software_manuals/api_reference/nodeos_chain_api#get_info)
 
 ```
-curl --request POST --data '' http://127.0.0.1:8888/v1/chain/get_info| jq
+curl -s --request POST --data '' http://127.0.0.1:8888/v1/chain/get_info| jq
 ``` 
 
 Output. Check `head_block_num`.
@@ -83,12 +84,6 @@ sudo docker run --rm -ti -v `readlink -f snapshot`:/host:ro -v cyberway-nodeos-d
 sudo docker run --rm -ti -v `readlink -f snapshot`:/host:ro -v cyberway-mongodb-data:/data:rw cyberway/cyberway:v2.1.1 tar -xPvf /host/mongodb.tar.bz2
 sudo docker run --rm -ti -v `readlink -f snapshot`:/host:ro -v cyberway-nats-data:/data:rw cyberway/cyberway:v2.1.1 tar -xPvf /host/nats.tar.bz2
 sudo ./start_full_node.sh up
-```
-
-```
-git clone https://github.com/lexansoft/stihi-backend-1.0/
-cd stihi-backend-1.0/
-docker run -it  --rm -v ${PWD}:/build -w /build golang:1.14 bash
 ```
 
 ## Build stihi-backend
