@@ -98,38 +98,108 @@ sudo docker run --rm -ti -v `readlink -f snapshot`:/host:ro -v cyberway-nats-dat
 sudo ./start_full_node.sh up
 ```
 
-## Build stihi-backend
+## Stihi-backend
+
+Clone repository
 
 ```
-git clone https://github.com/lexansoft/stihi-backend-1.0.git
+git clone https://github.com/fincubator/stihi-backend-1.0
 cd stihi-backend-1.0
-docker run -it  --rm -v ${PWD}:/build -w /build golang:1.14 go build
+git checkout docker
 ```
 
-Binary file `stihi-backend` will be exists on current directory 
+Generate JWT keys. Run inside `stihi-backend-1.0` directory
 
 ```
-./stihi-backend -h
-Usage of ./stihi-backend:
-  -config string
-    	Application config file name
-  -db_config string
-    	Db config file name
-  -mongo_db_config string
-    	MongoDb config file name
-  -pid string
-    	Pid file name (default "/var/tmp/stihi_backend_cyberway.pid")
-  -pidfile string
-    	If specified, write pid to file.
-  -redis_config string
-    	Redis config file name
-```
-Generate JWT keys
-
-```
-ssh-keygen -t rsa -b 4096 -m PEM -f jwtRS256.key
+ssh-keygen -t rsa -b 4096 -m PEM -f configs/priv_key.pem
 # Don't add passphrase
-openssl rsa -in jwtRS256.key -pubout -outform PEM -out jwtRS256.key.pub
-cat jwtRS256.key
-cat jwtRS256.key.pub
+openssl rsa -in jwtRS256.key -pubout -outform PEM -out configs/priv_key.pub
+cat configs/priv_key.pem
+cat configs/priv_key.pub
+```
+
+Prepare configs
+
+- `configs/db_config.yaml`
+```
+host: '127.0.0.1'
+port: 5433
+dbname: 'stihi'
+user: 'postgres'
+password: ''
+```
+- `configs/sredis_config.yaml`
+```
+reconfigure_mode: false
+main_servers:
+- addr: "127.0.0.1:6379"
+  db: 0
+  password: ''
+  priority: 1.0
+```
+- `configs/mongo_db_config.yaml`
+```
+host: '127.0.0.1'
+port: 27018
+dbname: '_CYBERWAY_gls_publish'
+user: ''
+password: ''
+```
+- `/configs/stihi_backend_config.yaml`
+
+```
+cors_origin: "*"
+golos:
+  creator: cyberfounder
+  creator_active_key: "<Active key>"
+  creator_posting_key: "<Posting key>"
+  create_account_fee:
+    amount: 10.000
+    symbol: GOLOS
+  payments_to: stihi-io
+rpc:
+  host: 127.0.0.1
+  port: 9091
+  chain: test
+listen:
+  host: 0.0.0.0
+  port: 9001
+jwt:
+  private_key_path: /configs/priv_key.pem
+  public_key_path: /configs/pub_key.pem
+  issuer: test.stihi.io
+  expire: 60
+  renew_time: 5
+l10n_errors:
+  - lang: ru
+    file_name: /configs/l10n/errors_ru.yaml
+  - lang: en
+    file_name: /configs/l10n/errors_en.yaml
+cyberway:
+  host: 127.0.0.1
+  port: 8888
+  uri: v1
+  procs_count: 4
+```
+
+Run shihi-backend
+
+```
+docker-compose up -d
+```
+
+Check that all containers have run
+
+```
+docker ps
+```
+
+output
+
+```
+CONTAINER ID        IMAGE                                 COMMAND                  CREATED       STATUS                          PORTS   NAMES
+<id>                stihi-backend-10-atom_stihi-backend   "stihi-backend -db_c…"   <time>        Restarting (1) 48 seconds ago           stihi-backend-10_stihi-ba
+<id>                redis:6.0.9                           "docker-entrypoint.s…"   <time>        Up 23 hours                             stihi-backend-10_redis_1
+<id>                postgres:11.5-alpine                  "docker-entrypoint.s…"   <time>        Up 23 hours                             stihi-backend-10_postgres_1
+...
 ```
