@@ -128,7 +128,7 @@ dbname: 'stihi'
 user: 'postgres'
 password: 'postgres'
 ```
-- `configs/sredis_config.yaml`
+- `configs/redis_config.yaml`
 ```
 reconfigure_mode: false
 main_servers:
