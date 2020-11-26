@@ -113,9 +113,9 @@ Generate JWT keys. Run inside `stihi-backend-1.0` directory
 ```
 ssh-keygen -t rsa -b 4096 -m PEM -f configs/priv_key.pem
 # Don't add passphrase
-openssl rsa -in jwtRS256.key -pubout -outform PEM -out configs/priv_key.pub
+openssl rsa -in configs/priv_key.pem -pubout -outform PEM -out configs/pub_key.pem
 cat configs/priv_key.pem
-cat configs/priv_key.pub
+cat configs/pub_key.pem
 ```
 
 Prepare configs
