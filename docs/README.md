@@ -118,7 +118,7 @@ cat configs/priv_key.pem
 cat configs/pub_key.pem
 ```
 
-Prepare configs
+Prepare configs.
 
 - `configs/db_config.yaml`
 ```
@@ -126,7 +126,7 @@ host: '127.0.0.1'
 port: 5433
 dbname: 'stihi'
 user: 'postgres'
-password: ''
+password: 'postgres'
 ```
 - `configs/sredis_config.yaml`
 ```
@@ -157,10 +157,6 @@ golos:
     amount: 10.000
     symbol: GOLOS
   payments_to: stihi-io
-rpc:
-  host: 127.0.0.1
-  port: 9091
-  chain: test
 listen:
   host: 0.0.0.0
   port: 9001
@@ -197,9 +193,9 @@ docker ps
 output
 
 ```
-CONTAINER ID        IMAGE                                 COMMAND                  CREATED       STATUS                          PORTS   NAMES
-<id>                stihi-backend-10-atom_stihi-backend   "stihi-backend -db_c…"   <time>        Restarting (1) 48 seconds ago           stihi-backend-10_stihi-ba
-<id>                redis:6.0.9                           "docker-entrypoint.s…"   <time>        Up 23 hours                             stihi-backend-10_redis_1
-<id>                postgres:11.5-alpine                  "docker-entrypoint.s…"   <time>        Up 23 hours                             stihi-backend-10_postgres_1
+CONTAINER ID        IMAGE                                 COMMAND                  CREATED             STATUS         PORTS   NAMES
+<id>                stihi-backend-10_stihi-backend        "stihi-backend -db_c…"   6 minutes ago       Up 6 minutes           stihi-backend-10_stihi-ba
+<id>                redis:6.0.9                           "docker-entrypoint.s…"   6 minutes ago       Up 6 minutes           stihi-backend-10_redis_1
+<id>                postgres:11.5-alpine                  "docker-entrypoint.s…"   6 minutes ago       Up 6 minutes           stihi-backend-10_postgres_1
 ...
 ```
