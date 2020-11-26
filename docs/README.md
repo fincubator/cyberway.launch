@@ -199,3 +199,14 @@ CONTAINER ID        IMAGE                                 COMMAND               
 <id>                postgres:11.5-alpine                  "docker-entrypoint.s…"   6 minutes ago       Up 6 minutes           stihi-backend-10_postgres_1
 ...
 ```
+
+Check status with api call
+
+```
+curl http://localhost:9001/api/v2/get_info
+```
+
+Output
+```
+{"info":{"articles":{"count":"-","last_time":"-"},"comments":{"count":"-","last_time":"-"},"follows":{"count":"-"},"last_block":"-","tags":{"count":"-"},"users":{"count":"-"},"votes":{"count":"-","last_time":"-"}},"status":"ok"}
+```
