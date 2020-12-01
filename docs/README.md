@@ -210,3 +210,38 @@ Output
 ```
 {"info":{"articles":{"count":"-","last_time":"-"},"comments":{"count":"-","last_time":"-"},"follows":{"count":"-"},"last_block":"-","tags":{"count":"-"},"users":{"count":"-"},"votes":{"count":"-","last_time":"-"}},"status":"ok"}
 ```
+
+## Stihi-frontend
+
+Clone repository
+```
+git clone https://github.com/fincubator/stihi-frontend-1.0
+cd stihi-frontend-1.0/
+git checkout docker
+```
+
+Run docker-compose
+
+```
+docker-compose up -d
+```
+
+Ensure that containert have run
+
+```
+docker ps
+```
+
+output
+```
+CONTAINER ID   IMAGE   COMMAND  CREATED  STATUS  PORTS  NAMES
+....                                                    stihi-frontend-10_stihi-front_1
+....                                                    stihi-frontend-10_nginx_1
+```
+
+Open link with browser `http://<your_ip_address>`
+```
+Example: http://localhost
+```
+
+![front](./img/stihi-front.png)
