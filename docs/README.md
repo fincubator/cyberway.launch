@@ -123,7 +123,7 @@ Prepare configs.
 - `configs/db_config.yaml`
 ```
 host: '127.0.0.1'
-port: 5433
+port: 5432
 dbname: 'stihi'
 user: 'postgres'
 password: 'postgres'
