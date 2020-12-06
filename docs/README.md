@@ -87,6 +87,9 @@ Donwload snapshot archive
 ```
 mkdir snapshot
 wget https://download.cyberway.io/snapshot-20201102-v2.1.1.tar -P ./snapshot/
+```
+Unpack snapshot archive
+```
 tar -xvf ./snapshot/snapshot-20201102-v2.1.1.tar -C ./snapshot/
 ```
 Remove shapshot archive
