@@ -83,14 +83,15 @@ Make sure you are in the project `cyberway.launch` directory
 cd cyberway.launch 
 ```
 
-Cereate `snapshot` directory and donwload snapshot archive
+Donwload snapshot archive
 ```
 mkdir snapshot
-cd snapshot
-wget https://download.cyberway.io/snapshot-20201102-v2.1.1.tar
-tar xvf snapshot-20201102-v2.1.1.tar
-rm snapshot-20201102-v2.1.1.tar
-cd ..
+wget https://download.cyberway.io/snapshot-20201102-v2.1.1.tar -P ./snapshot/
+tar -xvf ./snapshot/snapshot-20201102-v2.1.1.tar -C ./snapshot/
+```
+Remove shapshot archive
+```
+rm ./snapshot/snapshot-20201102-v2.1.1.tar
 ```
 Recovery from snapshot
 ```
