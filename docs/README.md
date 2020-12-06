@@ -78,7 +78,7 @@ Before continuing, your cyberway node must be fully synchronized to the blockcha
 
 ## (Optional) Recovery cyberway blockchain from shapshot
 
-Make sure you are in the project directory `cyberway.launch`
+Make sure you are in the project `cyberway.launch` directory 
 ```
 cd cyberway.launch 
 ```
