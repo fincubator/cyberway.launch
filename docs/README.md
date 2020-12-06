@@ -203,6 +203,12 @@ cyberway:
   procs_count: 4
 ```
 
+Create volumes
+```
+docker volume create stihi-redis
+docker volume create  stihi-postgres
+```
+
 Run shihi-backend
 
 ```
