@@ -83,16 +83,17 @@ Make sure you are in the project `cyberway.launch` directory
 cd cyberway.launch 
 ```
 
-Cereate `snapshot` directory
+Cereate `snapshot` directory and donwload snapshot archive
 ```
 mkdir snapshot
 cd snapshot
 wget https://download.cyberway.io/snapshot-20201102-v2.1.1.tar
 tar xvf snapshot-20201102-v2.1.1.tar
 rm snapshot-20201102-v2.1.1.tar
-
 cd ..
-
+```
+Recovery from snapshot
+```
 sudo docker stop -t 200 nodeosd
 sudo ./start_full_node.sh down
 sudo docker volume rm cyberway-mongodb-data cyberway-nodeos-data cyberway-queue cyberway-nats-data
