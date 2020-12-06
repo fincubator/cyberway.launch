@@ -78,11 +78,19 @@ Before continuing, your cyberway node must be fully synchronized to the blockcha
 
 ## (Optional) Recovery cyberway blockchain from shapshot
 
+Make sure you are in the project directory `cyberway.launch`
 ```
-cd cyberway.launch && mkdir snapshot && cd snapshot
+cd cyberway.launch 
+```
+
+Cereate `snapshot` directory
+```
+mkdir snapshot
+cd snapshot
 wget https://download.cyberway.io/snapshot-20201102-v2.1.1.tar
 tar xvf snapshot-20201102-v2.1.1.tar
 rm snapshot-20201102-v2.1.1.tar
+
 cd ..
 
 sudo docker stop -t 200 nodeosd
