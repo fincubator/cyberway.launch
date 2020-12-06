@@ -206,7 +206,7 @@ cyberway:
 Create volumes
 ```
 docker volume create stihi-redis
-docker volume create  stihi-postgres
+docker volume create stihi-postgres
 ```
 
 Run shihi-backend
