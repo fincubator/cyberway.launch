@@ -1,7 +1,7 @@
 
 # Golos Deployment How-to
 
-![](img/arch.drawio.png)
+![](img/arch1.png)
 
 ## System requirements
 
