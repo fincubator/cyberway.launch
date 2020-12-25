@@ -1,6 +1,8 @@
 
 # Golos Deployment How-to
 
+![](img/arch.drawio.png)
+
 ## System requirements
 
 - Debian 10
