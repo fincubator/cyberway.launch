@@ -133,7 +133,7 @@ sudo ./start_full_node.sh up
 
 
 
-## Stihi-backend & Stihi-frontend
+## Install Stihi-backend & Stihi-frontend
 
 [See documentation](https://github.com/fincubator/stihiio.launching/)
 
