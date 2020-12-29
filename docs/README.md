@@ -1,5 +1,5 @@
 
-# Golos Deployment How-to
+# Cyberway Deployment How-to
 
 ![](img/arch1.png)
 
